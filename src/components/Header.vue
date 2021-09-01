@@ -1,6 +1,7 @@
 <template>
   <header>
-    <div class="nav">
+    <Logo />
+    <div class="nav nav-pills">
       <div 
         v-for="nav in navigations"
         :key="nav.name"
@@ -8,6 +9,7 @@
       >
         <RouterLink 
           :to="nav.href"
+          active-class="active" 
           class="nav-link"
         >
           {{ nav.name }}
@@ -18,7 +20,12 @@
 </template>
 
 <script>
+import Logo from "./Logo.vue"
+
 export default {
+  components: {
+    Logo
+  },
   data(){
     return{
       navigations: [
