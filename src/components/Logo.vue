@@ -12,7 +12,11 @@
 
   .logo{
     font-size: 20px;
+    text-decoration: none;
     color: $black;
+    &:hover{
+      color: $black;
+    }
     span{
       color: $primary;
     }
