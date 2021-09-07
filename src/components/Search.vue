@@ -70,6 +70,7 @@ export default {
   methods: {
     async apply(){
       //Search Movie
+      //Print the 10 movies
       const OMDB_API_KEY = '7035c60c';
       const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${this.title}&type=${this.type}&y=${this.year}&page=1`)
       console.log(res)
