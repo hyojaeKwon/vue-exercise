@@ -49,7 +49,7 @@ export default {
         },
         {
           name:'year',
-          items: (() => {
+          items: (() => { //Arrow function
             const years = []
             const thisYear = new Date().getFullYear() // 2021
             for (var i = thisYear; i>= 1985 ; i--){
