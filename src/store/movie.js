@@ -5,7 +5,9 @@ export default{
   namespaced: true,
   // data
   state: () => ({
-    movies: []
+    movies: [],
+    // message: '',
+    // loading: false
   }),
   //computed
   getters: {
@@ -15,6 +17,18 @@ export default{
   },
   //methods
   mutations: {
+    // assignMovies ( state , Search) {
+    //   state.movies = Search
+    // },
+    updateState( state, payload){
+      // ['movies','message','loding']
+      Object.keys(payload).forEach(key => {
+        // state.movies = payload.moveis
+        // state.message = payload.message
+        // state.loading = payload.loading
+        state[key] = payload[key]
+      })
+    },
     //data part
     resetMovies(state){
       state.moveis = []
@@ -22,7 +36,7 @@ export default{
   },
   actions: {
     //async
-    async searchMovies({ commit }, payload){
+    async searchMovies(context, payload){
       const { title, type, number, year} = payload
       const OMDB_API_KEY = '7035c60c'
 
@@ -31,9 +45,13 @@ export default{
       
       //see the data of the res
       const { Search, totalResults } = res.data
-      commit('updateState', {
-        movies: Search
+      context.commit('updateState', {
+        movies: Search,
+        // message: 'Hello World',
+        // loading: true
       })
+      console.log(totalResults)
+      console.log(typeof totalResults)
     }
   }
 }
